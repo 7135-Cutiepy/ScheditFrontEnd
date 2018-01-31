@@ -4,7 +4,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
-Run `npm install -g @angular/cli` from the command line to install Angular CLI to be able to run commands below (prefixed with `ng`).
+Run `npm install -g @angular/cli` from the command line to install Angular CLI to be able to run commands prefixed with `ng`.
 
 ## Development server
 
