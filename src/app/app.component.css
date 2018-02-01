@@ -1,8 +1,8 @@
 .navbar {
-    background-color: #9400D3
+    background-color: #9400D3;
+    margin-bottom: 15px;
 }
 
 .col {
-    height: 600px;
-    border: 1px solid black;
+    outline: 1px solid black;
 }
