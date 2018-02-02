@@ -24,6 +24,10 @@ td {
     /* height: 24px; */
 }
 
+th {
+    width: 19%;
+}
+
 .time_slot[data-available="No"] {
     background: #d34a00;
 }
