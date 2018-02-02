@@ -11,6 +11,7 @@
     top: -17px;
     display: block;
     position: relative;
+    text-align: center;
 }
 
 table {
@@ -25,4 +26,9 @@ td {
 
 .time_slot {
     background: #d34a00;
+}
+
+table tbody tr:last-child td {
+    border: 0;
+    background: 0;
 }

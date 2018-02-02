@@ -1,131 +1,24 @@
 <div id="calendar">
-  <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col" class="time"></th>
-          <th scope="col">Monday</th>
-          <th scope="col">Tuesday</th>
-          <th scope="col">Wednesday</th>
-          <th scope="col">Thursday</th>
-          <th scope="col">Friday</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="time">8:00am</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">9:00am</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">10:00am</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">11:00am</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">12:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">1:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">2:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">3:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">4:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">5:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">6:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">7:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">8:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">9:00pm</td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-          <td class="time_slot"></td>
-        </tr>
-        <tr>
-          <td class="time">10:00pm</td>
-        </tr>
-      </tbody>
-    </table>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col" class="time"></th>
+            <th scope="col">Monday</th>
+            <th scope="col">Tuesday</th>
+            <th scope="col">Wednesday</th>
+            <th scope="col">Thursday</th>
+            <th scope="col">Friday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let time of times">
+            <td class="time">{{time}}</td>
+            <td class="time_slot"></td>
+            <td class="time_slot"></td>
+            <td class="time_slot"></td>
+            <td class="time_slot"></td>
+            <td class="time_slot"></td>
+          </tr>
+        </tbody>
+      </table>
 </div>
