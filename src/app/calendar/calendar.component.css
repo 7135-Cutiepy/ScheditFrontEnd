@@ -28,6 +28,10 @@ td {
     background: #d34a00;
 }
 
+.time_slot[available] {
+    background: #02a71d;
+}
+
 table tbody tr:last-child td {
     border: 0;
     background: 0;

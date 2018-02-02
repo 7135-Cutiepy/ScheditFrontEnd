@@ -26,4 +26,11 @@ export class CalendarComponent implements OnInit {
     }
   }
 
+  toggle_time_slot(elem) {
+    if (elem.getAttribute("available")) {
+      elem.removeAttribute("available");
+    } else {
+      elem.setAttribute("available", true);
+    }
+  }
 }

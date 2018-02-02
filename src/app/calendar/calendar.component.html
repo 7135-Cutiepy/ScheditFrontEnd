@@ -1,24 +1,24 @@
 <div id="calendar">
     <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col" class="time"></th>
-            <th scope="col">Monday</th>
-            <th scope="col">Tuesday</th>
-            <th scope="col">Wednesday</th>
-            <th scope="col">Thursday</th>
-            <th scope="col">Friday</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let time of times">
-            <td class="time">{{time}}</td>
-            <td class="time_slot"></td>
-            <td class="time_slot"></td>
-            <td class="time_slot"></td>
-            <td class="time_slot"></td>
-            <td class="time_slot"></td>
-          </tr>
-        </tbody>
-      </table>
+      <thead>
+        <tr>
+          <th scope="col" class="time"></th>
+          <th scope="col">Monday</th>
+          <th scope="col">Tuesday</th>
+          <th scope="col">Wednesday</th>
+          <th scope="col">Thursday</th>
+          <th scope="col">Friday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let time of times">
+          <td class="time">{{time}}</td>
+          <td class="time_slot" (click)="toggle_time_slot($event.srcElement)"></td>
+          <td class="time_slot" (click)="toggle_time_slot($event.srcElement)"></td>
+          <td class="time_slot" (click)="toggle_time_slot($event.srcElement)"></td>
+          <td class="time_slot" (click)="toggle_time_slot($event.srcElement)"></td>
+          <td class="time_slot" (click)="toggle_time_slot($event.srcElement)"></td>
+        </tr>
+      </tbody>
+    </table>
 </div>
