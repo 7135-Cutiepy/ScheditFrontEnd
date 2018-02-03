@@ -1,3 +1,9 @@
-#pref-bar {
-    margin: 15px 0;
+.card-header {
+    background-color: #9400D3;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+.card {
+    margin-bottom: 12px;
 }

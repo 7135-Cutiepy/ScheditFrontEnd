@@ -1,0 +1,14 @@
+.card-header {
+    background-color: #9400D3;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+.card-body {
+    padding: 12px 20px;
+}
+
+.card {
+    margin-bottom: 12px;
+    width: 600px;
+}

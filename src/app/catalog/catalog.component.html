@@ -1,5 +1,28 @@
-<ul>
-  <li *ngFor="let course of courses">
-    {{course.major}} {{course.ident}}
-  </li>
-</ul>
+<div class="container-fluid">
+  <h1 class="display-4">course catalog.</h1>
+  <div class="card" *ngFor="let course of courses">
+    <div class="card-header">
+      {{course.major}} {{course.ident}}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{course.name}}</h5>
+      <table class="table table-sm table-bordered" style="width:550px">
+        <thead>
+          <tr>
+            <th>Section</th>
+            <th>Instructor</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let section of course.sections">
+            <td>{{section.ident}}</td>
+            <td>{{section.instructor?.fname}} {{section.instructor?.lname}}</td>
+            <td>{{section?.timeslots[0]?.location}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
