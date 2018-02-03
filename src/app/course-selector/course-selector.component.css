@@ -1,0 +1,37 @@
+#course-selector {
+    /* border: 1px solid black;
+    border-radius: 5px;
+    height:400px; */
+    //padding-top: 30px;
+}
+
+.time {
+    border: 0;
+    /* padding-top: 0; */
+    top: -17px;
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+table {
+    border: 0;
+    margin: 0;
+}
+
+td {
+    padding: 3px;
+    /* height: 24px; */
+}
+
+.time_slot {
+    background: #d34a00;
+}
+
+.time_slot[available] {
+    background: #02a71d;
+}
+
+.edit_button {
+    background: #02a71d;
+}

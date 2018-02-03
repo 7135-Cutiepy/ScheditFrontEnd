@@ -24,11 +24,19 @@ td {
     /* height: 24px; */
 }
 
-.time_slot {
+th {
+    width: 19%;
+}
+
+.time_slot[data-available="No"] {
     background: #d34a00;
 }
 
-.time_slot[available] {
+.time_slot[data-available="Maybe"] {
+    background: #CCCC00;
+}
+
+.time_slot[data-available="Yes"] {
     background: #02a71d;
 }
 
