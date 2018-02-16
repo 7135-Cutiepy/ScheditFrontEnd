@@ -9,13 +9,14 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ScheduleViewerComponent implements OnInit {
+  scheduleData;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe(data => {
+    this.http.get("http://localhost:3000/schedule").subscribe(data => {
+      this.scheduleData = data;
       console.log(data);
     });
   }
-
 }
