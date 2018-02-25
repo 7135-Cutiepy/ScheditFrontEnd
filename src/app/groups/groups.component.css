@@ -1,0 +1,37 @@
+.card-header {
+    background-color: #9400D3;
+    color: #fff;
+    padding: 8px 2px;
+}
+
+.card {
+	padding: 10px;
+    margin: 10px;
+    background-color: #F5F5F5;
+}
+
+#course-card {
+	background-color: #FFFFFF;
+	margin-left: 0px;
+}
+
+#my-courses-area {
+	width: 100%;
+}
+
+#my-groups {
+	width: 100%;
+}
+
+#group-card {
+	width: 49%;
+	height: 100%;
+}
+
+.list-group-item {
+	margin: 2px;
+}
+
+.form-control {
+	margin-bottom: 7px;
+}

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DndModule } from 'ng2-dnd';
 
 
 import { AppComponent } from './app.component';
@@ -11,11 +13,14 @@ import { CourseSelectorComponent } from './course-selector/course-selector.compo
 import { CatalogComponent } from './catalog/catalog.component';
 import { CreateScheduleComponent } from './create-schedule/create-schedule.component';
 import { ScheduleViewerComponent } from './schedule-viewer/schedule-viewer.component';
+import { GroupsComponent } from './groups/groups.component';
+import { FilterPipe } from './course-search-pipe/course-search-filter.pipe'
 
 const appRoutes: Routes = [
   { path: '', component: CreateScheduleComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'view_schedules', component: ScheduleViewerComponent },
+  { path: 'groups', component: GroupsComponent },
 ];
 
 @NgModule({
@@ -26,7 +31,9 @@ const appRoutes: Routes = [
     CourseSelectorComponent,
     CatalogComponent,
     CreateScheduleComponent,
-    ScheduleViewerComponent
+    ScheduleViewerComponent,
+    GroupsComponent,
+    FilterPipe,
   ],
   imports: [
     RouterModule.forRoot(
@@ -34,7 +41,9 @@ const appRoutes: Routes = [
       { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    DndModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
