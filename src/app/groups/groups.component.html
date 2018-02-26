@@ -1,0 +1,92 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="card">
+				<input type="text" class="form-control" [(ngModel)]="searchText" placeholder="search for courses...">
+				<div class="list-group">
+					<button type="button" class="list-group-item list-group-item-action" *ngFor="let course of (courses | filter : searchText)" dnd-draggable [dragData]="course" (onDragSuccess)="courseDragged(course)" [dropZones]="['my-courses-area']">
+				  		{{course.major}} {{course.ident}} {{course.name}}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-8">
+			<div class="row">
+				<div class="card" id="my-courses-area" dnd-droppable (onDropSuccess)="addToMyCourses($event)" [dropZones]="['my-courses-area']">
+					<h3 class="display-4">my courses.</h3>
+					<div *ngIf="myCourses.length == 0; else showMyCourses">
+						<p class="h5">search for courses. drag and drop them here.</p>
+					</div>
+					<ng-template #showMyCourses>
+						<ul class="list-inline">
+							<li class="list-inline-item" *ngFor="let myCourse of myCourses">
+								<div class="card" id="course-card">
+									<p class="h5">{{myCourse.major}} {{myCourse.ident}} {{myCourse.name}}</p>
+								</div>
+							</li>
+						</ul>
+					</ng-template>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card" id="my-groups">
+					<h3 class="display-4">my course groups.</h3>
+
+					<!-- GROUP LIST -->
+					<ul class="list-inline">
+						<li class="list-inline-item" id="group-card">
+							<div class="card">
+								<p class="h5">courses i must take.</p>
+
+								<div class="dropdown">
+								  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    my courses
+								  </button>
+								  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a class="dropdown-item" (click)="addToMustTakeGroup(myCourse)" *ngFor="let myCourse of myCourses">
+								    	{{myCourse.major}} {{myCourse.ident}} {{myCourse.name}}
+								    </a>
+								  </div>
+								</div>
+
+								<ul class="list-inline">
+									<li class="list-inline-item" *ngFor="let course of mustTakeCourses">
+										<div class="card" id="course-card">
+											<p class="h5">{{course.major}} {{course.ident}} {{course.name}}</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="list-inline-item" id="group-card">
+							<div class="card">
+								<p class="h5">courses i want to take.</p>
+
+								<div class="dropdown">
+								  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								    my courses
+								  </button>
+								  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a class="dropdown-item" (click)="addToWantToTakeGroup(myCourse)" *ngFor="let myCourse of myCourses">
+								    	{{myCourse.major}} {{myCourse.ident}} {{myCourse.name}}
+								    </a>
+								  </div>
+								</div>
+
+								<ul class="list-inline">
+									<li class="list-inline-item" *ngFor="let course of wantToTakeCourses">
+										<div class="card" id="course-card">
+											<p class="h5">{{course.major}} {{course.ident}} {{course.name}}</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
