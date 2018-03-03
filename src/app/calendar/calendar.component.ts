@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-calendar',
@@ -7,11 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
+  message: any = 0;
+  @Input() dataRequested;
+  @Output() messageEvent = new EventEmitter<any>();
+
   times_lower_bound = 8;
   times_upper_bound = 21;
   times = [];
+  timePrefs = {};
 
   constructor() {
+  }
+  
+  sendInfo() {
+    this.messageEvent.emit(this.message);
+  }
+  
+  ngOnChanges(changes: SimpleChanges){
+    this.message = this.getCalendarData();
+    this.sendInfo();
+
   }
 
   ngOnInit() {
@@ -23,16 +38,31 @@ export class CalendarComponent implements OnInit {
         time_string = ((i>12) ? i-12 : i) + ":00pm";
       }
       this.times.push(time_string);
+      var dayPrefs = {};
+      for (var d = 0; d < 5; d++) {
+        dayPrefs[d] = "No";
+      }
+      this.timePrefs[time_string] = dayPrefs;
     }
   }
+  
+  update(time, day, state) {
+    this.timePrefs[time][day] = state;
+  }
+  
+  getCalendarData() {
+    return this.timePrefs;
+  }
 
-  toggle_time_slot(elem) {
+  toggle_time_slot(elem, time, day) {
     if (elem.getAttribute("data-available") == "No") {
-        elem.setAttribute("data-available", "Maybe");
+        elem.setAttribute("data-available", "Yes");
     } else if (elem.getAttribute("data-available") == "Maybe") {
         elem.setAttribute("data-available", "Yes");
     } else {
         elem.setAttribute("data-available", "No");
     }
+    
+    this.update(time, day, elem.getAttribute("data-available"));
   }
 }

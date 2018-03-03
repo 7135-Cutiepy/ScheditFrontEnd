@@ -14,7 +14,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { CreateScheduleComponent } from './create-schedule/create-schedule.component';
 import { ScheduleViewerComponent } from './schedule-viewer/schedule-viewer.component';
 import { GroupsComponent } from './groups/groups.component';
-import { FilterPipe } from './course-search-pipe/course-search-filter.pipe'
+import { FilterPipe } from './course-search-pipe/course-search-filter.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: CreateScheduleComponent },

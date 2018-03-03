@@ -18,11 +18,11 @@
         <tbody>
           <tr *ngFor="let time of times">
             <td class="time">{{time}}</td>
-            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement)"></td>
-            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement)"></td>
-            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement)"></td>
-            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement)"></td>
-            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement)"></td>
+            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement, time, 0)"></td>
+            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement, time, 1)"></td>
+            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement, time, 2)"></td>
+            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement, time, 3)"></td>
+            <td class="time_slot" data-available="No" (click)="toggle_time_slot($event.srcElement, time, 4)"></td>
           </tr>
         </tbody>
       </table>

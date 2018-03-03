@@ -9,19 +9,18 @@
           <div class="row">
             <div class="col-6">
               <label for="minCredits">Minimum Credits</label>
-              <input type="number" class="form-control" id="minCredits" placeholder="0" min="0" max="21">
+              <input #minVal type="number" (blur)="setMin(minVal.value)" class="form-control" id="minCredits" placeholder="0" min="0" max="21">
             </div>
             <div class="col-6">
               <label for="maxCredits">Maximum Credits</label>
-              <input type="number" class="form-control" id="maxCredits" placeholder="21" min="0" max="21">
+              <input #maxVal type="number" (blur)="setMax(maxVal.value)" class="form-control" id="maxCredits" placeholder="21" min="0" max="21">
             </div>
           </div>
         </div>
         <div class="form-group">
           <label for="numCourses">Preferred Number of Courses</label>
-          <input type="Number" class="form-control" id="numCourses" placeholder="0" min="0">
+          <input #prefVal type="Number" (blur)="setPref(prefVal.value)" class="form-control" id="numCourses" placeholder="0" min="0">
         </div>
-        <button type="submit" class="btn btn-primary">Create Schedule</button>
       </form>
     </div>
   </div>
