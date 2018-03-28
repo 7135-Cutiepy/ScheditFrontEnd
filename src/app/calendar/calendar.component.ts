@@ -55,12 +55,12 @@ export class CalendarComponent implements OnInit {
   }
 
   toggle_time_slot(elem, time, day) {
-    if (elem.getAttribute("data-available") == "No") {
-        elem.setAttribute("data-available", "Yes");
-    } else if (elem.getAttribute("data-available") == "Maybe") {
-        elem.setAttribute("data-available", "Yes");
+    if (elem.getAttribute("data-available") == "Never") {
+        elem.setAttribute("data-available", "Med");
+    } else if (elem.getAttribute("data-available") == "Low") {
+        elem.setAttribute("data-available", "Med");
     } else {
-        elem.setAttribute("data-available", "No");
+        elem.setAttribute("data-available", "Never");
     }
     
     this.update(time, day, elem.getAttribute("data-available"));

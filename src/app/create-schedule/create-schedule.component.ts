@@ -23,7 +23,6 @@ export class CreateScheduleComponent implements OnInit {
 
   receiveHourPrefs($event) {
     this.algorithmInput['schedule']['prefHours'] = $event;
-    console.log(this.algorithmInput);
   }
   
   receiveCalendarData($event) {

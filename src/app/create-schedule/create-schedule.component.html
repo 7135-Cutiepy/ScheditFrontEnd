@@ -8,5 +8,6 @@
       <app-pref-bar [dataRequested]="dataRequested" (messageEvent)="receiveHourPrefs($event)"> </app-pref-bar>
       <button type="submit" (click)="requestData()" class="btn btn-primary">Create Schedule</button>
     </div>
+    <app-groups [dataRequested]="dataRequested" (messageEvent)="receiveGroups($event)"></app-groups>
   </div>
 </div>

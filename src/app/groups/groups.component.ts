@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { NgModule }      from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
@@ -18,9 +18,17 @@ import { courses } from '../coursesModule'
  })
 
 export class GroupsComponent implements OnInit {
+  message: any = 0;
+  @Input() dataRequested;
+  @Output() messageEvent = new EventEmitter<any>();
+    
   courses = courses[0].courses;
   myCourses = [];
-
+  groups = {};
+  mustTake = {};
+  wantToTake = {};
+  
+  
   mustTakeCourses = [];
   wantToTakeCourses = [];
 
@@ -28,6 +36,30 @@ export class GroupsComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+  }
+  
+  ngOnChanges(changes: SimpleChanges){
+    this.message = this.getGroups();
+    this.messageEvent.emit(this.message);
+  }
+  
+  getGroups() {
+    this.mustTake['courses'] = this.mustTakeCourses;
+    this.mustTake['maxCourses'] = -1;
+    this.mustTake['minCourses'] = -1;
+    this.mustTake['minHours'] = -1;
+    this.mustTake['maxHours'] = -1;
+    this.mustTake['priority'] = "Must";
+    this.wantToTake['courses'] = this.wantToTakeCourses;
+    this.wantToTake['maxCourses'] = -1;
+    this.wantToTake['minCourses'] = -1;
+    this.wantToTake['minHours'] = -1;
+    this.wantToTake['maxHours'] = -1;
+    this.wantToTake['priority'] = "Med";
+    this.groups['mustTake'] = this.mustTake;
+    this.groups['wantToTake'] = this.wantToTake;
+    return this.groups;
   }
 
   courseDragged($event: any) {
