@@ -21,15 +21,15 @@ th {
     width: 19%;
 }
 
-.time_slot[data-available="No"] {
+.time_slot[data-available="Never"] {
     background: #d34a00;
 }
 
-.time_slot[data-available="Maybe"] {
+.time_slot[data-available="Low"] {
     background: #CCCC00;
 }
 
-.time_slot[data-available="Yes"] {
+.time_slot[data-available="Med"] {
     background: #02a71d;
 }
 
