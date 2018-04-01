@@ -4,10 +4,14 @@ import { FormsModule }   from '@angular/forms';
 
 import { courses } from '../coursesModule'
 
+import { CourseApiService } from '../course-api.service';
+import { ISections } from '../ISections';
+
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.css']
+  styleUrls: ['./groups.component.css'],
+  providers: [CourseApiService]
 })
 
 @NgModule({
@@ -32,11 +36,13 @@ export class GroupsComponent implements OnInit {
   mustTakeCourses = [];
   wantToTakeCourses = [];
 
-  constructor() {
+  _sectionsArray: ISections[];
+
+  constructor(private courseApiService: CourseApiService) {
   }
 
   ngOnInit() {
-    
+    this.getSections();
   }
   
   ngOnChanges(changes: SimpleChanges){
@@ -97,5 +103,13 @@ export class GroupsComponent implements OnInit {
     if (notDuplicate) {
       this.wantToTakeCourses.push(course);
     }
+  }
+
+  getSections() {
+    this.courseApiService.getSections()
+      .subscribe(
+        resultArray => this._sectionsArray = resultArray,
+        error => console.log('Error :: ' + error)
+      )
   }
 }
