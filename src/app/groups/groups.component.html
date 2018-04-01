@@ -4,8 +4,8 @@
 			<div class="card">
 				<input type="text" class="form-control" [(ngModel)]="searchText" placeholder="search for courses...">
 				<div class="list-group">
-					<button type="button" class="list-group-item list-group-item-action" *ngFor="let course of (courses | filter : searchText)" dnd-draggable [dragData]="course" (onDragSuccess)="courseDragged(course)" [dropZones]="['my-courses-area']">
-				  		{{course.major}} {{course.ident}} {{course.name}}
+					<button type="button" class="list-group-item list-group-item-action" *ngFor="let course of (_sectionsArray | filter : searchText)" dnd-draggable [dragData]="course" (onDragSuccess)="courseDragged(course)" [dropZones]="['my-courses-area']">
+				  		{{course.major}} {{course.course_number}} {{course.name}}
 					</button>
 				</div>
 			</div>
