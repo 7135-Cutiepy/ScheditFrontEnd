@@ -40,7 +40,7 @@ export class CalendarComponent implements OnInit {
       this.times.push(time_string);
       var dayPrefs = {};
       for (var d = 0; d < 5; d++) {
-        dayPrefs[d] = "No";
+        dayPrefs[d] = "Never";
       }
       this.timePrefs[time_string] = dayPrefs;
     }
