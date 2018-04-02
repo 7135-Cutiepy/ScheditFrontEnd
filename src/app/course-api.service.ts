@@ -2,20 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
-import { ISections } from './ISections';
+import { IMajors } from './IMajors';
+import { ICourses } from './ICourses';
 
 @Injectable()
 export class CourseApiService {
 
-  private _sectionsURL = "http://localhost:3000/catalog/sections";
+  private _majorsURL = "http://localhost:3000/catalog/majors";
+  private _coursesURL = "http://localhost:3000/catalog/courses/";
 
   constructor(private http: HttpClient) { }
 
-  getSections(): Observable<ISections[]> {
+  getMajors(): Observable<IMajors[]> {
     return this.http
-        .get(this._sectionsURL)
+        .get(this._majorsURL)
         .map((response) => {
-            return <ISections[]>response;
+            return <IMajors[]>response;
+        })
+        .catch(this.handleError);
+  }
+
+  getCourses(major): Observable<ICourses[]> {
+    return this.http
+        .get(this._coursesURL+major)
+        .map((response) => {
+            return <ICourses[]>response;
         })
         .catch(this.handleError);
   }
@@ -23,6 +34,4 @@ export class CourseApiService {
   private handleError(error: Response) {
       return Observable.throw(error.statusText);
   }
-
-
 }
