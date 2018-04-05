@@ -15,12 +15,16 @@ import { CreateScheduleComponent } from './create-schedule/create-schedule.compo
 import { ScheduleViewerComponent } from './schedule-viewer/schedule-viewer.component';
 import { GroupsComponent } from './groups/groups.component';
 import { FilterPipe } from './course-search-pipe/course-search-filter.pipe';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: CreateScheduleComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'view_schedules', component: ScheduleViewerComponent },
   { path: 'groups', component: GroupsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -34,6 +38,8 @@ const appRoutes: Routes = [
     ScheduleViewerComponent,
     GroupsComponent,
     FilterPipe,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     RouterModule.forRoot(
