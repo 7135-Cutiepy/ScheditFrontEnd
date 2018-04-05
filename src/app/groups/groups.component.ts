@@ -4,10 +4,14 @@ import { FormsModule }   from '@angular/forms';
 
 import { courses } from '../coursesModule'
 
+import { CourseApiService } from '../course-api.service';
+import { ICourses } from '../ICourses';
+
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.css']
+  styleUrls: ['./groups.component.css'],
+  providers: [CourseApiService]
 })
 
 @NgModule({
@@ -32,11 +36,14 @@ export class GroupsComponent implements OnInit {
   mustTakeCourses = [];
   wantToTakeCourses = [];
 
-  constructor() {
+  _majorsArray;
+  _sectionsArray: ICourses[];
+
+  constructor(private courseApiService: CourseApiService) {
   }
 
   ngOnInit() {
-    
+    this.getMajors();
   }
   
   ngOnChanges(changes: SimpleChanges){
@@ -97,5 +104,26 @@ export class GroupsComponent implements OnInit {
     if (notDuplicate) {
       this.wantToTakeCourses.push(course);
     }
+  }
+
+  getCourses(major) {
+    this.courseApiService.getCourses(major)
+      .subscribe(
+        resultArray => this._sectionsArray = resultArray,
+        error => console.log('Error :: ' + error)
+      )
+  }
+
+  getMajors() {
+    this.courseApiService.getMajors()
+      .subscribe(
+        resultArray => this._majorsArray = resultArray,
+        error => console.log('Error :: ' + error)
+      )
+  }
+
+  onSelectChange(value) {
+    console.log(value);
+    this.getCourses(value);
   }
 }
