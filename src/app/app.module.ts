@@ -16,6 +16,8 @@ import { ScheduleViewerComponent } from './schedule-viewer/schedule-viewer.compo
 import { GroupsComponent } from './groups/groups.component';
 import { FilterPipe } from './course-search-pipe/course-search-filter.pipe';
 import { SingleScheduleViewerComponent } from './single-schedule-viewer/single-schedule-viewer.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: CreateScheduleComponent },
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
   { path: 'view_schedules', component: ScheduleViewerComponent },
   { path: 'groups', component: GroupsComponent },
   { path: 'single_viewer', component: SingleScheduleViewerComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -37,6 +41,8 @@ const appRoutes: Routes = [
     GroupsComponent,
     FilterPipe,
     SingleScheduleViewerComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     RouterModule.forRoot(

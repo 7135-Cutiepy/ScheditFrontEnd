@@ -1,0 +1,29 @@
+.display-4 {
+	margin-left: 10px;
+	margin-bottom: 25px;
+}
+
+.btn-primary {
+	margin: 15px;
+	padding: 10px;
+}
+
+.card {
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 5px;
+	height: 100px;
+	width: 100%;
+	border-width: 0px;
+	background-color: #02a71d;
+	border-radius: 10px;
+}
+
+#scheduleName {
+	color: #FFFFFF;
+	margin: 0px;
+	padding-right: 10px;
+	margin-right: 20px;
+	font-size: 2.75rem;
+	text-align: left;
+}

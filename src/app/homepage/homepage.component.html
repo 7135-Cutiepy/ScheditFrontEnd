@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1 class="display-4">your schedules.</h1>
+		</div>
+		<div class="col">
+			<div class="float-right">
+				<button class="btn btn-primary">add schedule</button>
+			</div>
+		</div>
+	</div>
+	<div *ngFor="let schedule of schedules">
+		<div class="row">
+			<div class="card" [ngStyle]="{'background-color':getColor(schedule.status)}">
+				<h5 class="card-body">
+					<div class="container-fluid">
+
+						<div class="row">
+					        <div class="col">
+								<h6 class="display-4" id="scheduleName">
+									{{schedule.name}}
+								</h6>
+					    	</div>
+					        <div class="col">
+					            <div class="float-right">
+					                <div class="btn-toolbar">
+										<h6 class="display-4" id="scheduleName">
+											{{schedule.status}}
+										</h6>
+										<div class="btn-group mr-2" role="group" aria-label="Second group">
+											<button type="button" class="btn btn-info">view</button>
+										</div>
+										<div class="btn-group" role="group" aria-label="Third group">
+											<button type="button" class="btn btn-danger">delete</button>
+										</div>
+									</div>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+				</h5>
+			</div>
+		</div>
+	</div>
+</div>

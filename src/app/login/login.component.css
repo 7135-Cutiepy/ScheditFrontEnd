@@ -1,0 +1,14 @@
+.card {
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-top: 10%;
+}
+
+.card-header {
+	background-color: #9400D3;
+	color: #FFFFFF;
+}
+
+.btn {
+	margin-left: 10px;
+}

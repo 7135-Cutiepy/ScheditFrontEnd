@@ -40,7 +40,7 @@ export class CalendarComponent implements OnInit {
       this.times.push(time_string);
       var dayPrefs = {};
       for (var d = 0; d < 5; d++) {
-        dayPrefs[d] = "No";
+        dayPrefs[d] = "Never";
       }
       this.timePrefs[time_string] = dayPrefs;
     }
@@ -56,7 +56,7 @@ export class CalendarComponent implements OnInit {
 
   toggle_time_slot(elem, time, day) {
     if (elem.getAttribute("data-available") == "Never") {
-        elem.setAttribute("data-available", "Med");
+        elem.setAttribute("data-available", "Low");
     } else if (elem.getAttribute("data-available") == "Low") {
         elem.setAttribute("data-available", "Med");
     } else {
