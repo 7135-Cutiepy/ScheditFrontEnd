@@ -15,6 +15,7 @@ import { CreateScheduleComponent } from './create-schedule/create-schedule.compo
 import { ScheduleViewerComponent } from './schedule-viewer/schedule-viewer.component';
 import { GroupsComponent } from './groups/groups.component';
 import { FilterPipe } from './course-search-pipe/course-search-filter.pipe';
+import { SingleScheduleViewerComponent } from './single-schedule-viewer/single-schedule-viewer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'catalog', component: CatalogComponent },
   { path: 'view_schedules', component: ScheduleViewerComponent },
   { path: 'groups', component: GroupsComponent },
+  { path: 'single_viewer', component: SingleScheduleViewerComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     ScheduleViewerComponent,
     GroupsComponent,
     FilterPipe,
+    SingleScheduleViewerComponent,
     LoginComponent,
     RegisterComponent,
   ],
