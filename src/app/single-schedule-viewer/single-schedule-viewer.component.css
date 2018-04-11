@@ -1,0 +1,49 @@
+.time {
+    border: 0;
+    /* padding-top: 0; */
+    top: -17px;
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+table {
+    border: 0;
+    margin: 0;
+}
+
+td {
+    padding: 3px;
+    /* height: 24px; */
+}
+
+th {
+    width: 19%;
+}
+
+.time_slot[data-class="None"] {
+    background: #FFFFFF;
+}
+
+.time_slot[data-class="1"] {
+    background: #CCCC00;
+}
+
+.time_slot[data-class="2"] {
+    background: #02a71d;
+}
+
+table tbody tr:last-child td {
+    border: 0;
+    background: 0;
+}
+
+.card-header {
+    background-color: #9400D3;
+    color: #fff;
+    padding: 8px 16px;
+}
+
+.card {
+    margin-bottom: 12px;
+}

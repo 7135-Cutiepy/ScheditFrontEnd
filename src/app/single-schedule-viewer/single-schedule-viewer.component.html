@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header">
+    Schedule Name Here
+  </div>
+  <div class="card-body">
+    <svg width="1200" height="60" xmlns="http://www.w3.org/2000/svg">
+      <g *ngFor="let day of days">
+        <text attr.x="{{day * 150 + 165}}" y="30" attr.fill="black"> {{day_strings[day]}} </text>
+      </g>
+    </svg>
+    <svg width="1200" height="780" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="1200" height="780" fill="white" rx="15" ry="15"/>
+      <g *ngFor="let time of times">
+        <g *ngIf="((time % 60) == 0)">
+          <text x="0" attr.y="{{time - 480 + 30}}">{{time_strings[time]}}</text>
+        </g>
+        <g *ngFor="let day of days">
+          <g *ngIf="((week_schedule[time][day]) != 'None')">
+            <rect attr.x="{{day * 150 + 150}}" attr.y="{{time - 480}}" attr.fill="{{week_schedule[time][day]['color']}}" width="100" attr.height="{{week_schedule[time][day]['length']}}" rx="15" ry="15"/>
+            <text attr.x="{{day * 150 + 165}}" attr.y="{{time + 30 - 480}}" fill="black"> {{week_schedule[time][day]['name']}}</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
