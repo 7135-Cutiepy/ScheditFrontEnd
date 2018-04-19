@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="card">
-				<select class="form-control" [(ngModel)]="major" (change)="onSelectChange($event.target.value)">
+				<select class="form-control" (change)="onSelectChange($event.target.value)">
 					<option>Select Major</option>
 					<option *ngFor="let major of _majorsArray" value={{major.code}}>
 						{{major.name}}
