@@ -47,10 +47,6 @@ export class PrefBarComponent implements OnInit {
   }
   
   public getPrefs() {
-    return {
-        "min": this.min,
-        "max": this.max,
-        "pref": this.pref
-        }
+    return [this.min, this.max]
   }
 }
