@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DndModule } from 'ng2-dnd';
 
-
 import { AppComponent } from './app.component';
 import { PrefBarComponent } from './pref-bar/pref-bar.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -18,6 +17,9 @@ import { FilterPipe } from './course-search-pipe/course-search-filter.pipe';
 import { SingleScheduleViewerComponent } from './single-schedule-viewer/single-schedule-viewer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
   { path: '', component: CreateScheduleComponent },
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     FormsModule,
     DndModule.forRoot(),
   ],
-  providers: [],
+  providers: [ValidateService,
+              AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
