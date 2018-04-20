@@ -13,7 +13,8 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
   conf_password: String;
-  show_alert = false;
+  
+  alert_type = "";
   alert_text = "";
 
   constructor(private validateService: ValidateService,
@@ -32,13 +33,12 @@ export class RegisterComponent implements OnInit {
 
     var res = this.validateService.validateRegister(user);
 
-    this.show_alert = true;
-    this.alert_text = res.msg;
     if (!res.success) {
+      this.alert_type = "failure";
+      this.alert_text = res.msg;
     } else {
       this.authService.registerUser(user).subscribe(data => {
         if (data['success']) {
-          console.log(data);
           this.router.navigateByUrl('/');
         }
       });

@@ -1,5 +1,7 @@
 <div class="container">
-	<div class="alert alert-danger" *ngIf="show_alert" role="alert">
+	<div class="alert" *ngIf="alert_text" role="alert"
+		[class.alert-danger]="alert_type == 'failure'"
+		[class.alert-success]="alert_type == 'success'">
 		{{alert_text}}
 	</div>
 	<div class="card">

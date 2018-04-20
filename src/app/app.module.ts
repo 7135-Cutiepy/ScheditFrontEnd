@@ -17,18 +17,21 @@ import { FilterPipe } from './course-search-pipe/course-search-filter.pipe';
 import { SingleScheduleViewerComponent } from './single-schedule-viewer/single-schedule-viewer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { HomepageComponent } from './homepage/homepage.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { LogoutComponent } from './logout/logout.component';
 
 const appRoutes: Routes = [
-  { path: '', component: CreateScheduleComponent },
+  { path: '', component: LoginComponent },
+  { path: 'overview', component: HomepageComponent },
+  { path: 'create', component: CreateScheduleComponent },
   { path: 'catalog', component: CatalogComponent },
   { path: 'view_schedules', component: ScheduleViewerComponent },
   { path: 'groups', component: GroupsComponent },
   { path: 'single_viewer', component: SingleScheduleViewerComponent},
-  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'logout', component: LogoutComponent },
 ];
 
 @NgModule({
@@ -45,6 +48,8 @@ const appRoutes: Routes = [
     SingleScheduleViewerComponent,
     LoginComponent,
     RegisterComponent,
+    HomepageComponent,
+    LogoutComponent,
   ],
   imports: [
     RouterModule.forRoot(

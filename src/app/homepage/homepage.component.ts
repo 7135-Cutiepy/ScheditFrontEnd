@@ -14,11 +14,11 @@ export class HomepageComponent implements OnInit {
   	},
   	{
   		"name":"schedule 2",
-  		"status":"building..."
+  		"status":"generating"
   	},
   	{
   		"name":"schedule 3",
-  		"status":"waiting..."
+  		"status":"queued"
   	}
   ];	
 
@@ -31,9 +31,9 @@ export class HomepageComponent implements OnInit {
   	switch (status) {
       case 'done':
         return "#02a71d";
-      case 'building...':
+      case 'generating':
         return '#CCCC00';
-      case 'waiting...':
+      case 'queued':
         return '#d34a00';
     }
   }

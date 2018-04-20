@@ -1,21 +1,22 @@
 <div class="container">
+	<div class="alert" *ngIf="alert_text" role="alert"
+		[class.alert-danger]="alert_type == 'failure'"
+		[class.alert-success]="alert_type == 'success'">
+		{{alert_text}}
+	</div>
 	<div class="card">
 		<div class="card-header">
 			Login
 		</div>
 		<div class="card-body">
 			<form (submit)="loginUser($event)">
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">GaTech Email</span>
-					</div>
-					<input type="text" class="form-control" placeholder="gburdell85@gatech.edu" aria-label="Username" aria-describedby="basic-addon1">
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input required [(ngModel)]="email" name="email" type="email" id="email "class="form-control" placeholder="gburdell85@gatech.edu">
 				</div>
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="basic-addon1">Password</span>
-					</div>
-					<input type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input required [(ngModel)]="password" name="password" type="password" id="password" class="form-control">
 				</div>
 				<div class="float-right">
 					<div class="btn-toolbar">
