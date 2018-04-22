@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-schedule-viewer.component.css']
 })
 export class SingleScheduleViewerComponent implements OnInit {
-  /**Hardcoded test file**/
+  /**Hardcoded test file, replace with input schedule**/
   schedule = {"sched": [
       {
         "groupName": "any",
@@ -330,7 +330,8 @@ export class SingleScheduleViewerComponent implements OnInit {
           ]
         }
       }
-    ]}
+    ]};
+  schedule_name = "Schedule Name";
   times_lower_bound = 480;
   times_upper_bound = 1260;
   days = [0,1,2,3,4];
@@ -339,7 +340,7 @@ export class SingleScheduleViewerComponent implements OnInit {
   time_strings = [];
   c = 0;
   week_schedule = {};
-  colors = ["red", "blue", "green", "orange", "yellow", "purple", "pink"];
+  colors = ["#d34a00", "blue", "#02a71d", "orange", "#CCCC00", "#9400D3", "pink"];
   unique_classes = {};
 
   constructor() { }
