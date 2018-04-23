@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomepageComponent implements OnInit {
   
-  schedules = [];
+  schedules;
 
   constructor(private http: HttpClient,
     private authService: AuthService) { }
