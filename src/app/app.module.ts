@@ -29,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'catalog', component: CatalogComponent },
   { path: 'view_schedules', component: ScheduleViewerComponent },
   { path: 'groups', component: GroupsComponent },
-  { path: 'single_viewer', component: SingleScheduleViewerComponent},
+  { path: 'single_viewer/:id', component: SingleScheduleViewerComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
 ];

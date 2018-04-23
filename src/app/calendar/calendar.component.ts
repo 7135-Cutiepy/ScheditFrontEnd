@@ -12,7 +12,7 @@ export class CalendarComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<any>();
 
   times_lower_bound = 8;
-  times_upper_bound = 21;
+  times_upper_bound = 23;
   times = [];
   timePrefs = {};
 

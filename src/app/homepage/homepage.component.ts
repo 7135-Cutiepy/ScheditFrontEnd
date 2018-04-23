@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,24 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
   
-  schedules = [
-  	{
-  		"name":"schedule 1",
-  		"status":"done"
-  	},
-  	{
-  		"name":"schedule 2",
-  		"status":"generating"
-  	},
-  	{
-  		"name":"schedule 3",
-  		"status":"queued"
-  	}
-  ];	
+  schedules = [];
 
-  constructor() { }
+  constructor(private http: HttpClient,
+    private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.http.get('http://localhost:3000/schedule/user/' + this.authService.getEmail())
+      .subscribe(data => {
+        console.log(data);
+        this.schedules = data;
+      });;
+
   }
 
   getColor(status) {

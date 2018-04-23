@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-single-schedule-viewer',
@@ -331,6 +333,7 @@ export class SingleScheduleViewerComponent implements OnInit {
         }
       }
     ]}
+  schedule = {}
   times_lower_bound = 480;
   times_upper_bound = 1260;
   days = [0,1,2,3,4];
@@ -342,70 +345,83 @@ export class SingleScheduleViewerComponent implements OnInit {
   colors = ["red", "blue", "green", "orange", "yellow", "purple", "pink"];
   unique_classes = {};
 
-  constructor() { }
+  id;
+
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    for (var i = this.times_lower_bound; i <= this.times_upper_bound; i++) {
-      var time_string;
-      if (i < 720) {
-        var hour = Math.floor(i/60);
-        var min = i - hour * 60;
-        time_string = hour+":"+ ('00'+ min).substr(-2) + "a.m.";
-      } else {
-        var hour = Math.floor(i/60);
-        var min = i - hour * 60;
-        time_string = ((hour>12) ? hour-12 : hour)+":"+ ('00'+ min).substr(-2) + "p.m.";
-      }
-      this.times.push(i);
-      this.time_strings[i] = time_string;
-      var day_schedule = {0: "None", 1: "None", 2: "None", 3: "None", 4: "None"};
-      for (var d = 0; d < 5; d++) {
-        var subsched = this.schedule['sched'];
-        var course_names = Object.keys(subsched);
-        for (var k = 0; k < course_names.length; k++) {
-        
-          var course = subsched[k];
-          var timeslots = Object.keys(course['section']['timeslots']);
+    this.route.params.subscribe(params => {
+      this.id = params['id']
+      console.log(this.id)
+    });
+
+    this.http.get('http://localhost:3000/schedule/' + this.id).subscribe(data => {
+      this.schedule = data;
+      console.log(data);
+      
+      for (var i = this.times_lower_bound; i <= this.times_upper_bound; i++) {
+        var time_string;
+        if (i < 720) {
+          var hour = Math.floor(i/60);
+          var min = i - hour * 60;
+          time_string = hour+":"+ ('00'+ min).substr(-2) + "a.m.";
+        } else {
+          var hour = Math.floor(i/60);
+          var min = i - hour * 60;
+          time_string = ((hour>12) ? hour-12 : hour)+":"+ ('00'+ min).substr(-2) + "p.m.";
+        }
+        this.times.push(i);
+        this.time_strings[i] = time_string;
+        var day_schedule = {0: "None", 1: "None", 2: "None", 3: "None", 4: "None"};
+        for (var d = 0; d < 5; d++) {
+          var subsched = this.schedule['sched'];
+          var course_names = Object.keys(subsched);
+          for (var k = 0; k < course_names.length; k++) {
           
-          for (var j = 0; j < timeslots.length; j++) {
-          
-            var timeslot = course['section']['timeslots'][j]
-            var day;
-            switch (timeslot['day']) {
-            case 'M':
-                day = 0;
-                break;
-            case 'T':
-                day = 1;
-                break;
-            case 'W':
-                day = 2;
-                break;
-            case 'R':
-                day = 3;
-                break;
-            case 'F':
-                day = 4;
-                break;
-            default:
-            }
+            var course = subsched[k];
+            var timeslots = Object.keys(course['section']['timeslots']);
             
-            if ((i == timeslot['start_time']) && (day == d)) {
-              var name = course['major'] + " " + course['ident'];
-              var length = timeslot['end_time'] - timeslot['start_time'];
-              if (!(name in this.unique_classes)) {
-                this.unique_classes[name] = this.c;
-                this.c = this.c + 1;
+            for (var j = 0; j < timeslots.length; j++) {
+            
+              var timeslot = course['section']['timeslots'][j]
+              var day;
+              switch (timeslot['day']) {
+              case 'M':
+                  day = 0;
+                  break;
+              case 'T':
+                  day = 1;
+                  break;
+              case 'W':
+                  day = 2;
+                  break;
+              case 'R':
+                  day = 3;
+                  break;
+              case 'F':
+                  day = 4;
+                  break;
+              default:
               }
-              var color = this.colors[this.unique_classes[name]];
               
-              var class_object = {'name':name, 'length':length, 'color':color};
-              day_schedule[d] = class_object;
+              if ((i == timeslot['start_time']) && (day == d)) {
+                var name = course['major'] + " " + course['ident'];
+                var length = timeslot['end_time'] - timeslot['start_time'];
+                if (!(name in this.unique_classes)) {
+                  this.unique_classes[name] = this.c;
+                  this.c = this.c + 1;
+                }
+                var color = this.colors[this.unique_classes[name]];
+                
+                var class_object = {'name':name, 'length':length, 'color':color};
+                day_schedule[d] = class_object;
+              }
             }
           }
         }
+        this.week_schedule[i] = day_schedule;
       }
-      this.week_schedule[i] = day_schedule;
-    }
+    });
   }
 }

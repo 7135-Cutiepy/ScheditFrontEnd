@@ -47,6 +47,10 @@ export class PrefBarComponent implements OnInit {
   }
   
   public getPrefs() {
-    return [this.min, this.max]
+    if (!this.min)
+      this.min = 0
+    if (!this.max)
+      this.max = 21
+    return [parseInt(this.min), parseInt(this.max) ]
   }
 }

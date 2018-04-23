@@ -3,11 +3,6 @@
 		<div class="col">
 			<h1 class="display-4">your schedules.</h1>
 		</div>
-		<div class="col">
-			<div class="float-right">
-				<button class="btn btn-primary">add schedule</button>
-			</div>
-		</div>
 	</div>
 	<div *ngFor="let schedule of schedules">
     <div class="card text-white"
@@ -16,13 +11,13 @@
       [class.bg-success]="schedule.status == 'done'"
     >
 			<div class="card-body">
-        <div class="float-left">
+        <div class="float-left sched-title">
           <span>{{schedule.name}}</span>
         </div>
         <div class="float-right">
-            <span>{{schedule.status}}</span>
-          <button type="button" class="btn btn-info">view</button>
-          <button type="button" class="btn btn-danger">delete</button>
+            <span>status: {{schedule.status}}</span>
+          <a type="button" class="btn btn-info" href="single_viewer/{{schedule._id}}">view</a>
+          <!-- <button type="button" class="btn btn-danger">delete</button> -->
         </div>
 			</div>
 		</div>

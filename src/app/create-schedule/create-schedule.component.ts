@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-schedule',
@@ -10,14 +13,25 @@ export class CreateScheduleComponent implements OnInit {
   algorithmInput = {};
   
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private http: HttpClient) { }
 
   ngOnInit() {
     this.algorithmInput['schedule'] = {};
   }
   
   requestData(){
+    this.algorithmInput['email'] = this.authService.getEmail();
     console.log(this.algorithmInput);
+    this.http.post("http://localhost:3000/schedule", this.algorithmInput)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
     this.dataRequested = this.dataRequested + 1;
   }
 
@@ -36,4 +50,9 @@ export class CreateScheduleComponent implements OnInit {
   getAlgorithmInput() {
     return this.algorithmInput
   }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log(error);
+  };
+  
 }

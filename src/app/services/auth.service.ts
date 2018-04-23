@@ -30,6 +30,10 @@ export class AuthService {
     this.user = user;
   }
 
+  getEmail() {
+    return JSON.parse(localStorage.getItem('user'))['email'];
+  }
+
   logout() {
     this.authToken = null;
     this.user = null;
